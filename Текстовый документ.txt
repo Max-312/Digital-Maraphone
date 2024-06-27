@@ -47,3 +47,39 @@ https://AdelinaAiz@github.com
 Я создала ветку echo
 Там текстовый файл
 env_alembic
+
+Для написания кода, который заходит на сайт и играет в лабиринт, Вам потребуется использовать библиотеку для автоматизации действий в браузере, такую как Selenium WebDriver. Вам также понадобится знание языка программирования, например Python.
+
+Примерно так будет выглядеть код на Python с использованием Selenium:
+
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+import time
+
+# Открываем браузер
+driver = webdriver.Chrome()
+
+# Заходим на сайт с игрой
+driver.get("http://example.com")
+
+# Находим игровое поле
+game_field = driver.find_element_by_id("game-field")
+
+# На каждом уровне игры
+for level in range(1, 11):  # предположим, что уровней 10
+
+    # Получаем координаты препятствий на текущем уровне
+    obstacles_coordinates = get_obstacles_coordinates_for_level(level)
+
+    # Проходим по лабиринту, избегая препятствий
+    for obstacle in obstacles_coordinates:
+        x, y = obstacle
+        # код для перемещения по лабиринту и избегания препятствий
+
+    # Переходим на следующий уровень
+    next_level_button = driver.find_element_by_id("next-level-button")
+    next_level_button.click()
+
+# Закрываем браузер
+driver.quit()
+
