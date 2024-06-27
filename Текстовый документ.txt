@@ -39,3 +39,5 @@ if __name__ == '__main__':
 AdelinaAiz Wtabsrh8p!
 
 По возможности проверку на консистентность  вынеси в отдельную функцию в utils
+
+https://AdelinaAiz@github.com
