@@ -27,3 +27,15 @@ def solve_task():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080)
+
+
+
+
+
+
+
+////
+
+AdelinaAiz Wtabsrh8p!
+
+По возможности проверку на консистентность  вынеси в отдельную функцию в utils
