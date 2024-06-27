@@ -1,0 +1,32 @@
+//Создай соединение, данные запиши в env
+
+POSTGRES_DB=test_db_bot
+POSTGRES_USER=test_user_bot
+POSTGRES_PASSWORD=test_pass_bot
+POSTGRES_HOST=localhost
+POSTGRES_PORT=5432
+SECRET_KEY=uHgXretvHJG9OTEPSyYANClj8jXllQuo
+
+// Когда создашь модельки и настроишь подключение 
+// Там код есть в settings и config, разберешься
+// в docker compose пропиши 
+version: '3.3'
+
+services:
+  db:
+    image: postgres:15.2
+    restart: on-failure
+    environment:
+      POSTGRES_USER: test_user_bot
+      POSTGRES_PASSWORD: test_pass_bot
+      POSTGRES_DB: test_db_bot
+    ports:
+      - "5432:5432"
+
+Для миграции используй команды 
+// Генерация файла миграции 
+alembic revision --autogenerate -m "Migration Name" 
+// Запуск миграции
+alembic upgrade head 
+// Downgrade** последнюю миграцию (приведет к откату базы данных на одну миграцию назад)  
+alembic downgrade -1
