@@ -1,0 +1,29 @@
+from flask import Flask, request, jsonify
+
+app = Flask(__name__)
+
+@app.route('/tasks', methods=['POST'])
+def solve_task():
+    # Проверка, что тело запроса содержит данные в формате JSON
+    if not request.is_json:
+        return jsonify({'error': 'Invalid data format'}), 400
+    
+    data = request.get_json()
+
+    # Проверка наличия необходимых полей в данных задачи
+    if not all(key in data for key in ('task_description', 'task_schema', 'actions', 'max_count')):
+        return jsonify({'error': 'Missing required fields'}), 400
+
+    task_description = data['task_description']
+    task_schema = data['task_schema']
+    actions = data['actions']
+    max_count = data['max_count']
+    
+    # Логика решения задачи (предположим, что она простая и просто возвращает список действий)
+    command_list = actions[:max_count]
+
+    # Возвращение результата
+    return jsonify({'commandList': command_list}), 200
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=8080)
